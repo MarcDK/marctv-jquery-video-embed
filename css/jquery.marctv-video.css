@@ -1,0 +1,81 @@
+.jqvideo .sprite {
+    background-image: url(icons.png);
+    background-size: 100px 183px;
+}
+
+@media only screen
+and (-Webkit-min-device-pixel-ratio: 1.5), only screen
+and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    .jqvideo .sprite {
+        background-image: url(icons2x.png);
+    }
+}
+
+.jqvideo {
+    padding: 0;
+    margin: 0;
+}
+
+.jqvideo .crop {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+
+.jqvideo .crop .layer {
+    display: block;
+    position: absolute;
+}
+
+.jqvideo .playicon,
+.jqvideo .playicon_hover,
+.jqvideo .playicon_area {
+    opacity: 1;
+    height: 85px;
+    position: absolute;
+    width: 100px;
+}
+
+.jqvideo .playicon {
+    transition-property: none;
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -o-transition-property: none;
+}
+
+.jqvideo .playicon_hover {
+    background-position: 0 -88px;
+}
+
+.jqvideo .playicon {
+    background-position: 0 0;
+}
+
+.jqvideo .playicon_area {
+    z-index: 1000;
+}
+
+.jqvideo .playicon_hover {
+    z-index: 999;
+}
+
+.jqvideo .playicon {
+    z-index: 998;
+}
+
+.jqvideo .crop {
+    cursor: pointer;
+}
+
+.jqvideo .videotype {
+    position: absolute;
+    height: 30px;
+    padding-left: 0.4em;
+    left: 0;
+    top: 0;
+    color: #eee;
+    font: 700 90%/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-shadow: 0 0 4px #000000;
+}
