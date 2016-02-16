@@ -68,8 +68,9 @@
 
             vidimg = $('<div class="crop"><span class="layer"> </span><span class="playicon_area"></span> <span class="sprite playicon_hover"> </span> <span class="sprite playicon"> </span><span class="videotype">' + label + '</span><div class="img"></div>');
 
-
             var title = this.html();
+
+            gaEvent(mediatype, 'loaded', title);
 
             if (title) {
                 $(vidimg).find('.videotype').html(label + ' - ' + title);
@@ -134,7 +135,6 @@
                 });
 
                 var title = $("a.embedvideo", jqplayer).html();
-
 
             });
 
@@ -260,11 +260,11 @@
                         success: function (data) {
 
                             if (data.items.length > 0) {
-                                var title = data.items[0].snippet.title;
-                                    gaEvent('youtube', 'play', title);
+                                var vidtitle = data.items[0].snippet.title;
+                                    gaEvent('youtube', 'play', vidtitle);
 
                             } else {
-                                gaEvent('youtube', 'error', mediaID);
+                                gaEvent('youtube', 'error', title);
                             }
                         }
                     });
