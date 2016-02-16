@@ -11,7 +11,6 @@
     $.fn.embedvideo = function (options) {
         options = $.extend({
             description_html: '<p class="wp-caption-text"></p>',
-            yt_api_key: 'AIzaSyA9jwQmeLXBFSjz1rki8fetQ25hypVn8PM',
             forcehd: false,
             showinfo: false,
             mediatypes: {
@@ -121,7 +120,7 @@
 
                 var img_height = aspectHeight(img_width, 16, 9);
 
-                trackVideo(mediaID, mediatype, title);
+                gaEvent(mediatype, 'play', title);
 
                 $(this).html(vidobj);
 
@@ -239,41 +238,6 @@
                     eventLabel: label
                 });
             }
-        };
-
-        var trackVideo = function (mediaID, mediatype, title) {
-
-            switch (mediatype) {
-
-                case "vimeo":
-
-                    gaEvent('vimeo', 'play', title);
-
-                    break;
-
-                case "youtube":
-                    $.ajax({
-                        type: "GET",
-                        url: 'https://www.googleapis.com/youtube/v3/videos?id=' + mediaID + '&key=' + options.yt_api_key + '&part=snippet,status,contentDetails',
-                        dataType: 'jsonp',
-                        cache: true,
-                        success: function (data) {
-
-                            if (data.items.length > 0) {
-                                var vidtitle = data.items[0].snippet.title;
-                                    gaEvent('youtube', 'play', vidtitle);
-
-                            } else {
-                                gaEvent('youtube', 'error', title);
-                            }
-                        }
-                    });
-                    break;
-
-                default:
-                    return false;
-            }
-
         };
 
         var getQuerystring = function (key, url) {
